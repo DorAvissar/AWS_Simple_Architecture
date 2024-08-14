@@ -45,10 +45,8 @@ Users define and provide data center and Cloud infrastructure using a declarativ
 
 ## Files: 
 After completing all the steps, you should be having the following files created under the terraform project folder.
-  - provider.tf
   - variables.tf
   - network.tf
-  - keypair.tf
   - securitygroups.tf
   - ec2.tf
   - outputs.tf
@@ -56,29 +54,6 @@ After completing all the steps, you should be having the following files created
 ### optinal: (instead of the ec2.tf, not include in this project)
   - launchconfigurations.tf
   - autoscaling.tf
-
-### Provider.tf:
-Create a project folder of your choice. All of the code (files) will go under the newly created project folder.
-
-Create a file under the new folder with the name ‘provider.tf’ and add the following code in the file.
-
-```
-provider "aws" {
-  region = var.region
-}
-```
-This code adds AWS as a provider. 
-
-Open a terminal and navigate to the terraform project directory. Run the following command first:  
-```
-terraform configure
-```
-and then run the following command to initializ: 
-```
-terraform init
-```
-
-This step may take a few seconds to minutes to download the Terraform/AWS library.
 
 ### Variables.tf
 Create the set of variables to externalize the configuration which will be referenced in the following steps.
@@ -125,7 +100,20 @@ The optional step — creates IAM policy, and instance role and applied to the E
 Autoscaling definitions, help define the scalability based on the workload CPU and memory utilization. Defines how many instances to run initially and the maximum number of instances that can be created across the attached subnets. The min, max, and desired values can be adjusted in the variables.tf file.
 
 ## How to run it?
+Open a terminal and navigate to the terraform project directory. Run the following command first:  
+in the terminal: 
+```
+terraform configure
+```
+
+and then run the following command to initializ: 
+```
+terraform init
+```
+
+This step may take a few seconds to minutes to download the Terraform/AWS library.
 Run terraform plan before applying, to review the changes that will be applied in AWS.
+
 ```
 terraform plan
 ```
